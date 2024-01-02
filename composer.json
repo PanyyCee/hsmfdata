@@ -1,0 +1,21 @@
+{
+  "name": "hsmfdata/hsmf-sdk-php",
+  "description": "PHP SDK HuaShengMoFang Analytics",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Yu Pan",
+      "email": "panyu@huashengshucheng.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "hsmfdata\\": "src/"
+    }
+  },
+  "minimum-stability": "stable"
+}
