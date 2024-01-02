@@ -8,9 +8,11 @@ class LogReported
     protected $uploadUrl;
     protected $linesPer;
     protected $timeThreshold;
+    protected $apiToken;
 
-    public function __construct($filePath, $uploadUrl, $linesPer, $timeThreshold)
+    public function __construct($apiToken, $filePath, $uploadUrl, $linesPer, $timeThreshold)
     {
+        $this->apiToken = isset($apiToken) ? $apiToken : '';
         $this->filePath = isset($filePath) ? $filePath : './';
         $this->uploadUrl = isset($uploadUrl) ? $uploadUrl : '';
         $this->linesPer = isset($linesPer) ? $linesPer : 100;

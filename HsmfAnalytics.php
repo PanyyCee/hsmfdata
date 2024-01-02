@@ -59,7 +59,7 @@ class HsmfAnalytics
 }
 
 
-class FileConsumer
+class HsmfFileConsumer
 {
     private $file_handler;
 

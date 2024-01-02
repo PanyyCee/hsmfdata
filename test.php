@@ -1,17 +1,18 @@
 <?php
 require_once __DIR__ . '/../src/LogReported.php';
 
-$filePath = '../';
+$apiToken = '';
+$filePath = './';
 $uploadUrl = 'www.text.com';
-$linesPer = 1;
+$linesPer = 100;
 $timeThreshold = 300;
 
 //上报数据脚本
-$logReported = new \hsmfdata\LogReported($filePath, $uploadUrl, $linesPer, $timeThreshold);
+$logReported = new \hsmfdata\LogReported($apiToken, $filePath, $uploadUrl, $linesPer, $timeThreshold);
 $logReported->handle();
 
 require_once __DIR__ . '/../src/HsmfAnalytics.php';
-$customer = new FileConsumer('../');
+$customer = new HsmfFileConsumer('../');
 $sa = new HsmfAnalytics($customer);
 //用户访问记录
 $sa->track('123456', 'test', 'access_record', [
