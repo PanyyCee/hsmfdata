@@ -85,7 +85,6 @@ class LogReported
                     }
 
                     if (count($chunk) == $this->linesPer || (time() - $startTime) >= $this->timeThreshold) {
-                        var_dump('满足条件上报');
 
                         //curl上报
                         $postData = ['data' => $chunk];
@@ -115,9 +114,7 @@ class LogReported
                             sleep(5);
                         }
 
-
                     } else {
-                        var_dump('未满足条件不上报');
                         //重置指针位置
                         fseek($handle, $cursor);
                         //阻塞
@@ -126,7 +123,6 @@ class LogReported
 
                 }
 
-                var_dump('文件无可上报内容');
             }
 
             sleep(10);
@@ -173,6 +169,9 @@ class LogReported
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'hsmf-api-token:'.$this->apiToken
+        ]);
 
         // 执行curl请求
         $response = curl_exec($ch);

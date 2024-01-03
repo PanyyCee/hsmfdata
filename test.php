@@ -1,18 +1,18 @@
 <?php
-require_once __DIR__ . '/../src/LogReported.php';
+require_once 'LogReported.php';
 
 $apiToken = '';
 $filePath = './';
-$uploadUrl = 'www.text.com';
-$linesPer = 100;
+$uploadUrl = '';
+$linesPer = 10;
 $timeThreshold = 300;
 
 //上报数据脚本
 $logReported = new \hsmfdata\LogReported($apiToken, $filePath, $uploadUrl, $linesPer, $timeThreshold);
 $logReported->handle();
 
-require_once __DIR__ . '/../src/HsmfAnalytics.php';
-$customer = new HsmfFileConsumer('../');
+require_once 'HsmfAnalytics.php';
+$customer = new HsmfFileConsumer($filePath);
 $sa = new HsmfAnalytics($customer);
 //用户访问记录
 $sa->track('123456', 'test', 'access_record', [
@@ -43,7 +43,7 @@ $sa->track('123456', 'test', 'unfollow_record', [
 //用户看官币来源记录
 $sa->track('123456', 'test', 'coins_source_record', [
     "type" => "DgB",
-    "amount" => "短剧1",
+    "amount" => "123123123",
     "distribution_at" => "2023-12:29 00:21:00"
 ]);
 //用户点赞记录
